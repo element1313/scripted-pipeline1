@@ -15,8 +15,14 @@ node {
       stage("Install git") {
          sh "ssh -o StrictHostKeyChecking=no -i $SSHKEY $SSHUSERNAME@${ params.SSHNODE }  yum install git -y"
       }
-      stage("Install pip") {
-         sh "ssh -o StrictHostKeyChecking=no -i $SSHKEY $SSHUSERNAME@${ params.SSHNODE }  yum install python3 -y"
+    //   stage("Install maven") {
+    //      sh "ssh -o StrictHostKeyChecking=no -i $SSHKEY $SSHUSERNAME@${ params.SSHNODE }  yum install maven -y"
+    //   }
+    //   stage("updating package repository") {
+    //      sh "ssh -o StrictHostKeyChecking=no -i $SSHKEY $SSHUSERNAME@${ params.SSHNODE }  yum makecache"
+    //   }
+      stage("Install Ansible") {
+         sh "ssh -o StrictHostKeyChecking=no -i $SSHKEY $SSHUSERNAME@${ params.SSHNODE }  yum install ansible -y"
       }
    }
 }
