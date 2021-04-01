@@ -5,6 +5,9 @@ properties([
     ])
 node{
     withCredentials([sshUserPrivateKey(credentialsId: 'jenkins-master', keyFileVariable: 'SSHKEY', passphraseVariable: '', usernameVariable: 'SSHUSERNAME')]) {
+       stage('removing the repo') {
+          sh "ssh -o StrictHostKeyChecking=no -i $SSHKEY $SSHUSERNAME@${ params.SSHNODE }  rm -rf  https://github.com/anfederico/Flaskex -y"
+       }
        stage('cloning the repo') {
           sh "ssh -o StrictHostKeyChecking=no -i $SSHKEY $SSHUSERNAME@${ params.SSHNODE }  git clone https://github.com/anfederico/Flaskex"
        }
