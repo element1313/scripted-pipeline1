@@ -16,7 +16,7 @@ node {
          sh "ssh -o StrictHostKeyChecking=no -i $SSHKEY $SSHUSERNAME@${ params.SSHNODE }  yum install git -y"
       }
       stage("Install pip") {
-         sh "ssh -o StrictHostKeyChecking=no -i $SSHKEY $SSHUSERNAME@${ params.SSHNODE }  yum install python-pip -y"
+         sh "ssh -o StrictHostKeyChecking=no -i $SSHKEY $SSHUSERNAME@${ params.SSHNODE }  yum install python3 -y"
       }
    }
 }
